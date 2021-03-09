@@ -1,0 +1,418 @@
+{
+  "order": 0,
+  "index_patterns": [
+    "pid-bssmw-express-*"
+  ],
+  "settings": {
+    "index": {
+      "number_of_shards": "2",
+      "number_of_replicas": "1",
+      "mapping": {
+        "total_fields": {
+          "limit": "2000"
+        },
+        "ignore_malformed": "true"
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "@timestamp": {
+        "type": "date"
+      },
+      "log": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "ignore_above": 256,
+            "type": "keyword"
+          }
+        }
+      },
+      "stream": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "ignore_above": 256,
+            "type": "keyword"
+          }
+        }
+      },
+      "podlog": {
+        "properties": {
+          "app_name": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "ignore_above": 256,
+                "type": "keyword"
+              }
+            }
+          },
+          "process_id": {
+            "type": "text"
+          },
+          "@timestamp": {
+            "type": "date"
+          },
+          "level": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "ignore_above": 256,
+                "type": "keyword"
+              }
+            }
+          },
+          "meta": {
+            "properties": {
+              "res": {
+                "dynamic": false,
+                "properties": {
+                  "body": {
+                    "type": "object",
+                    "properties": {
+                      "result": {
+                        "properties": {
+                          "serviceInstanceId": {
+                            "type": "text",
+                            "fields": {
+                              "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "serviceInstanceNumber": {
+                        "type": "text",
+                        "fields": {
+                          "keyword": {
+                            "ignore_above": 256,
+                            "type": "keyword"
+                          }
+                        }
+                      },
+                      "code": {
+                        "type": "long"
+                      },
+                      "m1RefId": {
+                        "type": "text",
+                        "fields": {
+                          "keyword": {
+                            "ignore_above": 256,
+                            "type": "keyword"
+                          }
+                        }
+                      },
+                      "return": {
+                        "properties": {
+                          "correlationId": {
+                            "type": "text",
+                            "fields": {
+                              "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "statusCode": {
+                    "type": "text"
+                  }
+                }
+              },
+              "downStreamLogs": {
+                "type": "object",
+                "enabled": false
+              },
+              "apiUrl": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "ignore_above": 256,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "requestId": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "ignore_above": 256,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "pipelineLog": {
+                "type": "object",
+                "enabled": false
+              },
+              "req": {
+                "dynamic": false,
+                "properties": {
+                  "ip": {
+                    "type": "text",
+                    "fields": {
+                      "keyword": {
+                        "ignore_above": 256,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "fields": {
+                    "properties": {
+                      "data": {
+                        "properties": {
+                          "MSISDN": {
+                            "type": "text",
+                            "fields": {
+                              "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                              }
+                            }
+                          },
+                          "serviceInstanceNumber": {
+                            "type": "text",
+                            "fields": {
+                              "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "serviceInstanceId": {
+                        "type": "text",
+                        "fields": {
+                          "keyword": {
+                            "ignore_above": 256,
+                            "type": "keyword"
+                          }
+                        }
+                      },
+                      "accountNumber": {
+                        "type": "text",
+                        "fields": {
+                          "keyword": {
+                            "ignore_above": 256,
+                            "type": "keyword"
+                          }
+                        }
+                      },
+                      "ban": {
+                        "type": "text",
+                        "fields": {
+                          "keyword": {
+                            "ignore_above": 256,
+                            "type": "keyword"
+                          }
+                        }
+                      },
+                      "args": {
+                        "properties": {
+                          "serviceInstanceNumber": {
+                            "type": "text",
+                            "fields": {
+                              "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                              }
+                            }
+                          },
+                          "msisdn": {
+                            "type": "text",
+                            "fields": {
+                              "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                              }
+                            }
+                          },
+                          "packageHistoryIdList": {
+                            "type": "text",
+                            "fields": {
+                              "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "inventoryNumber": {
+                        "type": "text",
+                        "fields": {
+                          "keyword": {
+                            "ignore_above": 256,
+                            "type": "keyword"
+                          }
+                        }
+                      },
+                      "number": {
+                        "type": "text",
+                        "fields": {
+                          "keyword": {
+                            "ignore_above": 256,
+                            "type": "keyword"
+                          }
+                        }
+                      },
+                      "accountInformation": {
+                        "properties": {
+                          "number": {
+                            "type": "text",
+                            "fields": {
+                              "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "action": {
+                        "type": "text",
+                        "fields": {
+                          "keyword": {
+                            "ignore_above": 256,
+                            "type": "keyword"
+                          }
+                        }
+                      },
+                      "orderInformation": {
+                        "properties": {
+                          "no": {
+                            "type": "text",
+                            "fields": {
+                              "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "id": {
+                        "type": "text",
+                        "fields": {
+                          "keyword": {
+                            "ignore_above": 256,
+                            "type": "keyword"
+                          }
+                        }
+                      },
+                      "serviceInstance": {
+                        "type": "text",
+                        "fields": {
+                          "keyword": {
+                            "ignore_above": 256,
+                            "type": "keyword"
+                          }
+                        }
+                      },
+                      "newIccid": {
+                        "type": "text",
+                        "fields": {
+                          "keyword": {
+                            "ignore_above": 256,
+                            "type": "keyword"
+                          }
+                        }
+                      },
+                      "status": {
+                        "type": "text",
+                        "fields": {
+                          "keyword": {
+                            "ignore_above": 256,
+                            "type": "keyword"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "responseCode": {
+                "type": "long"
+              }
+            }
+          },
+          "label": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "ignore_above": 256,
+                "type": "keyword"
+              }
+            }
+          },
+          "message": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "ignore_above": 256,
+                "type": "keyword"
+              }
+            }
+          },
+          "type": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "ignore_above": 256,
+                "type": "keyword"
+              }
+            }
+          },
+          "status": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "ignore_above": 256,
+                "type": "keyword"
+              }
+            }
+          },
+          "timestamp": {
+            "type": "date"
+          }
+        }
+      },
+      "host": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "ignore_above": 256,
+            "type": "keyword"
+          }
+        }
+      },
+      "namespace_name": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "ignore_above": 256,
+            "type": "keyword"
+          }
+        }
+      },
+      "pod_name": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "ignore_above": 256,
+            "type": "keyword"
+          }
+        }
+      }
+    }
+  },
+  "aliases": {}
+}
